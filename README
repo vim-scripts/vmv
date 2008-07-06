@@ -1,0 +1,32 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2285
+
+vmv - the vim version of the mv command. This script is in intent exactly the same as renamer.vim, rename a mass of files all at once using the full power of vim's editing capabilities.  Usage is much simpler to remember if you haven't used it in months, and the script itself is much shorter. Great for anybody who just ripped a CD to "track 01.mp3" through "track 12.mp3", or just inherited a collection of mp3's without proper case and with underscores instead of spaces. 
+
+Also notable is that this will deal with files that start with a - or -- just fine.
+
+
+Usage is simple:
+1. Give it a list of files to be renamed.
+2. Edit that list to reflect what you want the file names to be.
+3. ":wq" and you're done
+
+Here's a few examples:
+
+#Rename all non-hidden files in the current directory
+localhost~$vmv
+
+#Rename all mp3 files below the current directory
+localhost~$find | grep  -i '\.mp3$' | vmv
+
+#Rename all files listed in file "list.txt"
+#Note that the file list.txt will be saved as well as files on disk renamed.
+localhost~$vmv list.txt
+
+There are two "bugs" that I know of:
+1. It remembers the previous name of the file via line number, so if you add or delete lines bad things may happen.
+2. It renames files directly to the destination filename, so trying to swap filenames will instead overwrite the second with the first, and rename the second as the first. Probably not what you wanted, but the fix is too complicated and the case rare enough that I didn't bother to implement it.
+3. It's fairly slow when writing large lists of files, even if only a few where modified. Some better way of storing the meta-data (i.e. original name) is needed.
+
+There isn't really much error checking. If the original file name doesn't exist, that line will fail with a message, but it will merrily proceed with the rest of the file. If the destination file name already exists it will overwrite without warning. There is no lifeguard, swim at your own risk. I was going to write fixes for those, and also make it check if the file exists when it's first loaded for editing. I changed my mind because, after all, <sarcasm> I know what I'm doing. </sarcasm> Yes, the 0.1 version number is correct. It's functional, and does what I need it to do, and little else.
+
+If you enjoy this script, and want it improved, your comments would be helpful.
