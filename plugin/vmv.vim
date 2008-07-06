@@ -36,9 +36,9 @@ function VMVOneLine()
 	endif
 
 "	debug!
-	echo "source=".s:src
-	echo "dest=".s:dest
-	echo "line=".s:line
+"	echo "source=".s:src
+"	echo "dest=".s:dest
+"	echo "line=".s:line
 " test existance
 	if getfperm(s:src) == ""
 		echo "DIE! - file no longer exists, the error is essentialy the same as \"file was modified while being edited\""
@@ -101,10 +101,10 @@ endfunction
 " store static meta-data
 "	currently, create second buffer, assuming buffer is open.
 "Verify existance of a file for each line...
-if ! VMVScanBuf()
-	echo "INVALID: not all lines correspond to files"
+"if ! VMVScanBuf()
+"	echo "INVALID: not all lines correspond to files"
 "	quit!
-endif
+"endif
 
 " We are editing a list of files, if it's in a file with a name, we 
 " will write that file out when the "write" command is given. If there 
